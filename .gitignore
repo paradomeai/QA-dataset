@@ -1,0 +1,10 @@
+*.pyc
+*.txt
+*.json
+*.lock
+*.arrow
+*.md
+*.jsonl
+testing.py
+babi/*
+*.DS_Store

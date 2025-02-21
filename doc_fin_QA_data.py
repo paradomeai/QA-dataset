@@ -29,11 +29,11 @@ Question:
 
 # heedle in a nay stack with very very random noise (like "kinds in the 1300's loved their jesters.  Jane went to the kitchen. Turtles run at approximately 0.5 mph")
 def load_docfinqa(docfinqa_size, shuffle = True, exclude_programs = True):
-    docfinqa = load_dataset("kensho/DocFinQA", cache_dir="./data_babi_cache")
+    docfinqa = load_dataset("kensho/DocFinQA", cache_dir="./data_cache")
     # this is the same dataset 85% confident
-    # booydar_babilong = load_dataset("booydar/babilong", "2k", cache_dir="./data_babi_cache")
+    # booydar_babilong = load_dataset("booydar/babilong", "2k", cache_dir="./data_cache")
     # this is also the same dataset but only has the first 5 kinds of questions but 1k examples for each instead of 100
-    # booydar_babilong_1k = load_dataset("booydar/babilong-1k-samples", "2k", cache_dir="./data_babi_cache")
+    # booydar_babilong_1k = load_dataset("booydar/babilong-1k-samples", "2k", cache_dir="./data_cache")
 
     # concatenate qa1,qa2,qa3,... (this is different for some noise levels)
     # ['Context', 'Question', 'Program', 'Answer']

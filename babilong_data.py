@@ -30,11 +30,11 @@ def load_babilong(babilong_size, noise_level, qa_sets = set(["qa1", "qa2", "qa3"
     """
     noise_level: "0k", "1k", "2k", "4k", "8k", "16k", "32k", "64k", "128k", "256k", "512k", "1m"
     """
-    babilong = load_dataset("RMT-team/babilong", noise_level, cache_dir="./data_babi_cache")
+    babilong = load_dataset("RMT-team/babilong", noise_level, cache_dir="./data_cache")
     # this is the same dataset 85% confident
-    # booydar_babilong = load_dataset("booydar/babilong", "2k", cache_dir="./data_babi_cache")
+    # booydar_babilong = load_dataset("booydar/babilong", "2k", cache_dir="./data_cache")
     # this is also the same dataset but only has the first 5 kinds of questions but 1k examples for each instead of 100
-    # booydar_babilong_1k = load_dataset("booydar/babilong-1k-samples", "2k", cache_dir="./data_babi_cache")
+    # booydar_babilong_1k = load_dataset("booydar/babilong-1k-samples", "2k", cache_dir="./data_cache")
     # qa1, qa2, qa3, qa7, qa8 are the interesting ones that have multi step reasoning (qa1 is very basic)
 
     # concatenate qa1,qa2,qa3,... (this is different for some noise levels)

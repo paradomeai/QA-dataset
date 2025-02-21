@@ -25,9 +25,9 @@ Question
         "long_answer": question["long_answer"],
     }
     if len(question["answer"]) < 25:
-        rm_prompt = binary_rm_prompt.format(question=question["input"], answer=question["answers"][0]) if len(question["answers"]) == 1 else None
+        rm_prompt = binary_rm_prompt.format(question=question["question"], answer=question["answer"])
     else:
-        rm_prompt = long_form_rm_prompt.format(question=question["input"], answer=question["answers"][0]) if len(question["answers"]) == 1 else None
+        rm_prompt = long_form_rm_prompt.format(question=question["question"], answer=question["answer"])
     item = LCDatasetItem(
         ds_name = "repliqa",
         question_specific_prompt = question_specific_prompt.format(question=question["question"]),

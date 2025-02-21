@@ -39,10 +39,11 @@ Question:
         "length": question["length"],
         "dataset": question["dataset"]
     }
+    assert(len(question["answers"]) == 1)
     if len(question["answers"][0]) < 25:
-        rm_prompt = binary_rm_prompt.format(question=question["input"], answer=question["answers"][0]) if len(question["answers"]) == 1 else None
+        rm_prompt = binary_rm_prompt.format(question=question["input"], answer=question["answers"][0])
     else:
-        rm_prompt = long_form_rm_prompt.format(question=question["input"], answer=question["answers"][0]) if len(question["answers"]) == 1 else None
+        rm_prompt = long_form_rm_prompt.format(question=question["input"], answer=question["answers"][0])
     item = LCDatasetItem(
         ds_name="long bench v1",
         question_specific_prompt=question_specific_prompt.format(question=question["input"]),
@@ -111,7 +112,7 @@ def load_lbv1(lbv1_size, shuffle, max_length = None, exclude_programs = True):
                             ) # the column Ens question is just wrong so remove it.  We remove any questions with multiple answers, or even commas cuz its too weird.  This gets rid of about 600 (25%) of the dataset
     
     if max_length:
-        datasets = datasets.filter(lambda x: (int(x["length"]) < max_length and print(x["length"])))
+        datasets = datasets.filter(lambda x: (int(x["length"]) < max_length))
 
     if exclude_programs:
         datasets = datasets.filter(lambda x: x["language"] == "en")

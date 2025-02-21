@@ -4,15 +4,15 @@ from pydantic import BaseModel
 import json
 
 # Create a directory for the dataset (e.g., 'data')
-os.makedirs("data_babi_cache", exist_ok=True)
+os.makedirs("data_cache", exist_ok=True)
 
 # # need to select a length (up to 1m)
 # # Rag also probably needs to be done on a per question basis as well
-# babilong = load_dataset("RMT-team/babilong", "0k", cache_dir="./data_babi_cache")
+# babilong = load_dataset("RMT-team/babilong", "0k", cache_dir="./data_cache")
 
-# booydar_babilong = load_dataset("booydar/babilong", "0k", cache_dir="./data_babi_cache")
+# booydar_babilong = load_dataset("booydar/babilong", "0k", cache_dir="./data_cache")
 
-# booydar_babilong_1k = load_dataset("booydar/babilong-1k-samples", "2k", cache_dir="./data_babi_cache")
+# booydar_babilong_1k = load_dataset("booydar/babilong-1k-samples", "2k", cache_dir="./data_cache")
 
 # for i in babilong:
 #     print(i)
@@ -33,7 +33,7 @@ os.makedirs("data_babi_cache", exist_ok=True)
 #     target: str
 
 
-docfinqa = load_dataset("kensho/DocFinQA", cache_dir="./data_babi_cache")
+docfinqa = load_dataset("kensho/DocFinQA", cache_dir="./data_cache")
 
 print(docfinqa)
 docfinqa = concatenate_datasets([docfinqa["train"], docfinqa["validation"], docfinqa["test"]])

@@ -92,12 +92,13 @@ class RaggableDS:
 if __name__ == "__main__":
     ds = RaggableDS(shuffle=True, shuffle_all=False)
     ds.add_lbv2(400)
-    ds.add_repliqa(500)
+    ds.add_repliqa(1600)
     # ds.add_loong(1)
-    ds.add_babilong(300, "0k", set(["qa1", "qa2", "qa3", "qa7", "qa8"]))
-    ds.add_babilong(300, "16k", set(["qa1", "qa2", "qa3", "qa7", "qa8"]))
-    ds.add_docfinqa(1800)
-    ds.add_lbv1(2000)
+    ds.add_babilong(200, "0k", set(["qa1", "qa2", "qa3", "qa7", "qa8"]))
+    ds.add_babilong(350, "32k", set(["qa1", "qa2", "qa3", "qa7", "qa8"]))
+    ds.add_babilong(350, "1M", set(["qa1", "qa2", "qa3", "qa7", "qa8"]))
+    ds.add_docfinqa(1900)
+    ds.add_lbv1(1700)
 
     # s = set()
     # for d in ds.ds:

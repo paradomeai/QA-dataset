@@ -141,9 +141,10 @@ def load_lbv1(lbv1_size, shuffle, max_length = None, exclude_programs = True):
 
 
 if __name__ == "__main__":
-    ds = load_lbv1(20, shuffle=True, max_length=None, exclude_programs=True)
+    ds = load_lbv1(1600, shuffle=True, max_length=None, exclude_programs=True)
     for d in ds:
-        if len(d["answers"]) > 1:
+        if "hardcore" in d["answers"][0]:
             print(d["input"])
-        print(len(d["answers"]), d["answers"])
-        print("-"*100)
+            print(d["answers"])
+            print(d["context"])
+            print("-"*100)

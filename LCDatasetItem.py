@@ -13,7 +13,7 @@ class LCDatasetItem(BaseModel):
     _id: str
     context_uuid: Optional[str] = None
     question: str
-    answer: Any 
+    answer: str
     question_specific_prompt: str
     ds_specific_info: Dict
     reward_type: RewardType

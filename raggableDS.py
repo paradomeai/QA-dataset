@@ -90,12 +90,12 @@ class RaggableDS:
         )
 
 if __name__ == "__main__":
-    ds = RaggableDS(shuffle=True, shuffle_all=False)
+    ds = RaggableDS(shuffle=True, shuffle_all=True)
     ds.add_lbv2(400)
     ds.add_repliqa(1600)
     # ds.add_loong(1)
     ds.add_babilong(200, "0k", set(["qa1", "qa2", "qa3", "qa7", "qa8"]))
-    ds.add_babilong(350, "32k", set(["qa1", "qa2", "qa3", "qa7", "qa8"]))
+    ds.add_babilong(300, "32k", set(["qa1", "qa2", "qa3", "qa7", "qa8"]))
     ds.add_babilong(350, "1M", set(["qa1", "qa2", "qa3", "qa7", "qa8"]))
     ds.add_docfinqa(1900)
     ds.add_lbv1(1700)
@@ -119,11 +119,21 @@ if __name__ == "__main__":
     # Serialize the instance to a JSON string
     # Write the JSON string to a file
     file_info = []
+    all_subfields = set()
+    # ensure uniform subfields for ds_specific_info
+    for d in ds.ds:
+        for k in d.ds_specific_info:
+            all_subfields.add(k)
+    
     with open("questions.json", "w") as file:
         for d in ds.ds:
-            json_data = d.model_dump()  # Get dictionary instead of JSON string
+            json_data = d.model_dump()
+            if "length" in json_data["ds_specific_info"]:
+                json_data["ds_specific_info"]["length"] = str(json_data["ds_specific_info"]["length"])
+            json_data["context"] = ds.contexts[d.context_uuid]
             file_info.append(json_data)
-        
         json.dump(file_info, file, indent=4)  # Properly write as JSON
     
-    print(json.dumps(ds.contexts, indent=4))
+    context_info = []
+    with open("context.json", "w") as file:
+        json.dump(ds.contexts, file, indent=4)  # Properly write as JSON

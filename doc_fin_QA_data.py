@@ -54,8 +54,12 @@ def load_docfinqa(docfinqa_size, shuffle = True, exclude_programs = True):
 
 if __name__ == "__main__":
     ds = load_docfinqa(1000, shuffle=True)
+    count = 0
     for d in ds:
+        count += 1
+        if count > 3:
+            break
         # print(d["Question"])
-        print(d["Answer"])
+        print(d["Context"])
         print("-"*100)
     print(ds)
